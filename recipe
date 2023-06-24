@@ -1,0 +1,44 @@
+class Recipe:
+    def __init__(self, name, ingredients, instructions):
+        self.name = name
+        self.ingredients = ingredients
+        self.instructions = instructions
+
+    def display_recipe(self):
+        print(f"Recipe: {self.name}")
+        print("Ingredients:")
+        for ingredient in self.ingredients:
+            print("- " + ingredient)
+        print("Instructions:")
+        for step, instruction in enumerate(self.instructions, start=1):
+            print(f"{step}. {instruction}")
+        print()
+
+class RecipeBook:
+    def __init__(self):
+        self.recipes = []
+
+    def add_recipe(self, recipe):
+        self.recipes.append(recipe)
+
+    def display_recipes(self):
+        if not self.recipes:
+            print("No recipes in the book.")
+        else:
+            print("Recipes:")
+            for recipe in self.recipes:
+                recipe.display_recipe()
+
+if __name__ == '__main__':
+    recipe_book = RecipeBook()
+
+    recipe1 = Recipe("Pancakes", ["Flour", "Milk", "Egg", "Sugar", "Butter"], ["Mix all ingredients in a bowl", "Heat a non-stick pan", "Pour batter onto the pan", "Cook until golden brown"])
+    recipe_book.add_recipe(recipe1)
+
+    recipe2 = Recipe("Spaghetti Bolognese", ["Spaghetti", "Ground beef", "Tomato sauce", "Onion", "Garlic", "Italian herbs"], ["Cook spaghetti according to package instructions", "In a pan, sauté onion and garlic", "Add ground beef and cook until browned", "Pour in tomato sauce and add herbs", "Simmer for 20 minutes", "Serve over cooked spaghetti"])
+    recipe_book.add_recipe(recipe2)
+
+    recipe3 = Recipe("Chocolate Chip Cookies", ["Flour", "Butter", "Sugar", "Egg", "Vanilla extract", "Chocolate chips"], ["Cream together butter and sugar", "Beat in egg and vanilla extract", "Mix in flour and chocolate chips", "Drop spoonfuls of dough onto a baking sheet", "Bake at 180°C for 10-12 minutes"])
+    recipe_book.add_recipe(recipe3)
+
+    recipe_book.display_recipes()
